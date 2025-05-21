@@ -97,7 +97,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-6 bg-cream">
+    <section id="contact" className="py-20 px-6 bg-cream dark:bg-dark-bg transition-colors duration-300">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-12">
           <motion.div
@@ -213,7 +213,7 @@ const Contact = () => {
               
               <motion.button 
                 type="submit" 
-                className="w-full bg-brown text-white px-6 py-3 rounded-md font-sans text-sm uppercase tracking-wider hover:bg-opacity-90 transition-colors flex justify-center items-center"
+                className="w-full bg-terracotta text-white px-6 py-3 rounded-md font-sans text-sm uppercase tracking-wider hover:bg-terracotta-dark transition-colors duration-300 flex justify-center items-center"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={isSubmitting}

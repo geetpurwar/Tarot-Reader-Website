@@ -15,7 +15,7 @@ const stripePromise = loadStripe(config.stripe.publishableKey, {
   betas: undefined
 });
 
-const ContactForm = () => {
+const ContactForm = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -79,13 +79,20 @@ const ContactForm = () => {
         
         // Track the form submission
         trackButtonClick('contact_form_submit');
+        
+        // Close the modal after a successful submission (after showing the success message)
+        setTimeout(() => {
+          if (onClose) onClose();
+        }, 2000);
       }, 1500);
     }
   };
   
   return (
-    <div className="mt-6">
-      <h3 className="text-xl font-serif mb-4 text-brown dark:text-white transition-colors duration-300">Contact Us</h3>
+    <div className="mt-2">
+      <h3 className="text-2xl font-serif mb-4 text-brown dark:text-white transition-colors duration-300">Contact Us</h3>
+      
+      <p className="mb-4 text-brown dark:text-gray-300 transition-colors duration-300">Have questions or looking to schedule a reading? We'd love to hear from you! Fill out the form below, and we'll get back to you soon.</p>
       
       {isSubmitted ? (
         <div className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-100 p-4 rounded-md mb-4 transition-colors duration-300">
@@ -166,7 +173,7 @@ const ContactForm = () => {
   );
 };
 
-const NewsletterForm = () => {
+const NewsletterForm = ({ onClose }) => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -423,6 +430,7 @@ const CheckoutForm = ({ service, packageType, onClose }) => {
 };
 
 const ServiceModal = ({ service, isOpen, onClose, modalType = 'service' }) => {
+  console.log('ServiceModal rendered with modalType:', modalType, 'isOpen:', isOpen, 'service:', service ? 'exists' : 'null');
   const [packageType, setPackageType] = useState('standard');
   
   // Track modal interactions
@@ -451,11 +459,13 @@ const ServiceModal = ({ service, isOpen, onClose, modalType = 'service' }) => {
   };
   
   const renderModalContent = () => {
+    console.log('Rendering modal content for type:', modalType);
     switch(modalType) {
       case 'contact':
-        return <ContactForm />;
+        console.log('Rendering ContactForm component');
+        return <ContactForm onClose={onClose} />;
       case 'newsletter':
-        return <NewsletterForm />;
+        return <NewsletterForm onClose={onClose} />;
       case 'podcast':
         return <PodcastLinks />;
       case 'service':
@@ -499,7 +509,11 @@ const ServiceModal = ({ service, isOpen, onClose, modalType = 'service' }) => {
   };
 
   // Only check for service if the modalType is 'service'
-  if (modalType === 'service' && !service) return null;
+  // Other modalTypes (like 'contact') don't require a service object
+  if (modalType === 'service' && !service) {
+    console.log('Service is null for service modal type, not rendering');
+    return null;
+  }
 
   return (
     <AnimatePresence>

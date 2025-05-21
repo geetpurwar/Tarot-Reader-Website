@@ -69,8 +69,10 @@
   "navigation": {
     "mainLinks": [
       {"name": "About", "path": "#about", "isExternal": false},
-      {"name": "Tarot", "path": "#tarot-info", "isExternal": false},
+      {"name": "Services", "path": "#tarot-info", "isExternal": false},
       {"name": "FAQ", "path": "#faq", "isExternal": false},
+      {"name": "Newsletter", "path": "#", "isModal": true, "modalType": "newsletter"},
+      {"name": "Podcast", "path": "#", "isModal": true, "modalType": "podcast"},
       {"name": "Contact Us", "path": "#", "isModal": true, "modalType": "contact"}
     ],
     "footerLinks": [

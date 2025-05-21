@@ -54,7 +54,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <motion.a 
-            href="#services" 
+            href="#tarot-info" 
             className="bg-terracotta text-white px-8 py-3 rounded-md font-sans text-sm uppercase tracking-wider hover:bg-opacity-90 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -62,7 +62,7 @@ const Hero = () => {
             Explore Services
           </motion.a>
           <motion.a 
-            href="#about" 
+            href="#faq" 
             className="border border-white text-white px-8 py-3 rounded-md font-sans text-sm uppercase tracking-wider hover:bg-white hover:bg-opacity-10 transition-colors"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

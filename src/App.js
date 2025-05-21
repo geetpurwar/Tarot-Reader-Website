@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
@@ -8,6 +8,7 @@ import TarotInfo from './components/TarotInfo';
 import About from './components/About';
 import Banner from './components/Banner';
 import FAQ from './components/FAQ';
+import Contact from './components/Contact';
 // MysticalSymbols component removed
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfService from './components/TermsOfService';
@@ -66,6 +67,7 @@ function App() {
     // Initialize Google Analytics
     initGA();
   }, []);
+
   return (
     <ThemeProvider>
       <Router>

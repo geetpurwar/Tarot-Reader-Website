@@ -23,7 +23,7 @@ const Navbar = () => {
       const elementPosition = element.getBoundingClientRect().top;
       
       // Calculate the offset position
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20;
+      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
       
       // Smooth scroll to element with offset
       window.scrollTo({
@@ -65,15 +65,18 @@ const Navbar = () => {
   // Listen for custom events to open modals
   useEffect(() => {
     const handleOpenModal = (event) => {
+      console.log('Custom openModal event received:', event.detail);
       const { type } = event.detail;
       setModalType(type);
       setIsModalOpen(true);
     };
     
     window.addEventListener('openModal', handleOpenModal);
+    console.log('Added event listener for openModal');
     
     return () => {
       window.removeEventListener('openModal', handleOpenModal);
+      console.log('Removed event listener for openModal');
     };
   }, []);
 
@@ -82,10 +85,12 @@ const Navbar = () => {
   };
 
   const openModal = (type) => {
+    console.log('openModal called with type:', type);
     // Track modal opening
     trackButtonClick(`open_${type}_modal`, 'modal');
     setModalType(type);
     setIsModalOpen(true);
+    console.log('Modal state updated:', { modalType: type, isModalOpen: true });
   };
 
   const closeModal = () => {
@@ -95,12 +100,12 @@ const Navbar = () => {
   return (
     <nav className="bg-cream dark:bg-gray-800 py-4 px-6 md:px-12 flex justify-between items-center shadow-md sticky top-0 z-50 transition-colors duration-300 border-b border-terracotta-dark/20 dark:border-terracotta-dark/10">
       <motion.div 
-        className="text-2xl md:text-3xl font-serif font-semibold text-brown dark:text-white transition-colors duration-300"
+        className="text-2xl md:w-[200px] md:text-3xl font-serif font-semibold text-brown dark:text-white transition-colors duration-300"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <a href="/" className="flex items-center space-x-2" onClick={(e) => {
+        <a href="/" className="flex items-center space-x-2 outline-none w-[200px]" onClick={(e) => {
           if (window.location.pathname === '/') {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -110,15 +115,18 @@ const Navbar = () => {
         </a>
       </motion.div>
       
-      <div className="hidden md:flex space-x-10 font-sans text-base font-medium tracking-wide text-brown dark:text-white transition-colors duration-300">
+      <div className="hidden md:flex space-x-10 font-serif text-base font-medium tracking-wide text-brown dark:text-white transition-colors duration-300">
+        {
+          console.log(navigation.mainLinks)
+        }
         {navigation.mainLinks.map((link, index) => {
           // Determine if this is a modal link, external link, or internal navigation
-          if (link.path.startsWith('#') && !link.isExternal) {
+          if (link.path.startsWith('#') && !link.isExternal && !link.isModal) {
             // Internal anchor link - use smooth scroll
             return (
               <motion.button
                 key={index}
-                className={`relative hover:text-terracotta dark:hover:text-terracotta-dark transition-colors duration-300 py-2 px-3 group ${activeSection === link.path.substring(1) ? 'text-terracotta dark:text-terracotta-dark font-semibold' : ''}`}
+                className={`relative hover:text-terracotta dark:hover:text-terracotta-dark transition-colors duration-300 py-1 px-0 group ${activeSection === link.path.substring(1) ? 'text-terracotta dark:text-terracotta-dark font-semibold' : ''}`}
                 whileHover={{ y: -1 }}
                 onClick={() => scrollToSection(link.path.substring(1))}
               >
@@ -129,14 +137,15 @@ const Navbar = () => {
           } else if (link.isModal) {
             // Modal trigger
             return (
-              <motion.button
-                key={index}
-                className="relative hover:text-terracotta dark:hover:text-terracotta-dark transition-colors duration-300 py-1 px-1 group"
-                whileHover={{ y: -2 }}
-                onClick={() => openModal(link.modalType || 'contact')}
+            <motion.button
+            key={index}
+            className="relative hover:text-terracotta dark:hover:text-terracotta-dark transition-colors duration-300 py-1 px-1 group"
+            whileHover={{ y: -2 }}
+            onClick={() => {
+            openModal(link.modalType);
+            }}
               >
                 {link.name}
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-terracotta dark:bg-terracotta-dark transition-all duration-300 group-hover:w-full"></span>
               </motion.button>
             );
           } else if (link.isExternal) {
@@ -173,7 +182,7 @@ const Navbar = () => {
         })}
       </div>
       
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-4 md:w-[200px]">
         {/* Dark mode toggle */}
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -201,7 +210,12 @@ const Navbar = () => {
           whileTap={{ scale: 0.95 }}
         >
           <button 
-            onClick={() => openModal('contact')}
+            onClick={() => {
+              trackButtonClick('header_contact');
+              // Open contact modal through global event
+              const event = new CustomEvent('openModal', { detail: { type: 'contact' } });
+              window.dispatchEvent(event);
+            }}
             className="bg-terracotta dark:bg-terracotta-dark text-white px-6 py-2.5 rounded-md font-sans text-base font-medium tracking-wide hover:bg-opacity-90 transition-all duration-300 shadow-sm hover:shadow"
           >
             Contact Us
@@ -264,7 +278,15 @@ const Navbar = () => {
                     whileHover={{ scale: 1.1 }}
                     onClick={() => {
                       toggleMobileMenu();
-                      openModal(link.modalType || 'contact');
+                      if (link.modalType === 'contact') {
+                        trackButtonClick('mobile_nav_contact');
+                        // Open contact modal through global event
+                        const event = new CustomEvent('openModal', { detail: { type: 'contact' } });
+                        window.dispatchEvent(event);
+                      } else {
+                        // For other modal types, still use the original function
+                        openModal(link.modalType || 'contact');
+                      }
                     }}
                   >
                     {link.name}
@@ -314,7 +336,10 @@ const Navbar = () => {
               whileHover={{ scale: 1.1 }}
               onClick={() => {
                 toggleMobileMenu();
-                openModal('contact');
+                trackButtonClick('mobile_contact');
+                // Open contact modal through global event
+                const event = new CustomEvent('openModal', { detail: { type: 'contact' } });
+                window.dispatchEvent(event);
               }}
             >
               Contact us

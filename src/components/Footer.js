@@ -41,7 +41,7 @@ const Footer = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-terracotta">Empress</span>Jasmine
+            <span className="text-terracotta">YoUnicorn</span> Tarot
           </motion.div>
           
           <motion.div 
@@ -69,7 +69,7 @@ const Footer = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            &copy; {new Date().getFullYear()} EmpressJasmine. All rights reserved.
+            &copy; {new Date().getFullYear()} YoUnicorn Tarot. All rights reserved.
           </motion.p>
           
           <motion.div 
