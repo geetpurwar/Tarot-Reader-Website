@@ -2,28 +2,29 @@
   "name": "tarott",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "legacy-build": "react-scripts build",
-    "legacy-start": "react-scripts start"
+    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^3.7.0",
     "@stripe/stripe-js": "^7.3.0",
-    "nuxt": "^3.8.1"
+    "framer-motion": "^10.18.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-google-recaptcha": "^3.1.0",
+    "react-helmet": "^6.1.0",
+    "react-intersection-observer": "^9.16.0",
+    "react-router-dom": "^7.6.0",
+    "react-scripts": "^5.0.1",
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.9.0",
-    "@nuxt/devtools": "latest",
-    "@nuxt/font": "^0.1.0",
-    "@nuxt/image": "^1.0.0",
-    "@nuxt/ui": "^2.10.0",
     "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
-    "tailwindcss": "^3.4.17"
+    "html-webpack-plugin": "^5.5.3",
+    "postcss": "^8.5.3"
   }
 }
