@@ -1,0 +1,82 @@
+/* TarotServices.css */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  border-radius: 0.5rem;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.service-card img {
+  transition: transform 0.5s ease;
+}
+
+.service-card:hover img {
+  transform: scale(1.1);
+}
+
+.modal-overlay {
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #d96e48 #f5f0e8;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f5f0e8;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: #d96e48;
+  border-radius: 4px;
+}
+
+.benefit-item {
+  transition: transform 0.2s ease;
+}
+
+.benefit-item:hover {
+  transform: translateX(5px);
+}
+
+.service-image-container {
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.service-image {
+  transition: transform 0.5s ease;
+}
+
+.service-image-container:hover .service-image {
+  transform: scale(1.05);
+}
+
+/* Pulse animation for Buy Now button */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(217, 110, 72, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(217, 110, 72, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 110, 72, 0);
+  }
+}
+
+.pulse-button {
+  animation: pulse 2s infinite;
+}

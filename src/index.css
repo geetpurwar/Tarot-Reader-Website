@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap');
+
+/* Dynamic import of the hero background from ImagesModule will be handled in the component */
+
+:root {
+  --color-cream: #f5f0e8;
+  --color-brown: #3d2314;
+  --color-terracotta: #d96e48;
+  --color-sage: #8c9b7a;
+  --color-midnight: #1a1a2e;
+}
+
+body {
+  background-color: var(--color-cream);
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.hero-pattern {
+  /* Background image is dynamically loaded in the Hero component */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.symbols-row {
+  animation: float 6s ease-in-out infinite;
+}
+
+.tarot-card {
+  transition: all 0.5s ease;
+}
+
+.tarot-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}

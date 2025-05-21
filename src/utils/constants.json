@@ -1,0 +1,82 @@
+{
+  "siteInfo": {
+    "name": "Younicorn Tarot",
+    "tagline": "Illuminating Your Path Forward"
+  },
+  "theme": {
+    "colors": {
+      "primary": "#CD5C5C",
+      "secondary": "#8FBC8F",
+      "tertiary": "#DEB887",
+      "background": "#FAF0E6",
+      "text": "#4A3728",
+      "terracotta": "#CD5C5C",
+      "sage": "#8FBC8F",
+      "cream": "#FAF0E6",
+      "brown": "#4A3728",
+      "white": "#FFFFFF",
+      "black": "#000000",
+      "error": "#FF5252",
+      "success": "#4CAF50"
+    },
+    "fonts": {
+      "heading": "'Playfair Display', serif",
+      "body": "'Raleway', sans-serif",
+      "serif": "'Playfair Display', serif",
+      "sans": "'Raleway', sans-serif"
+    },
+    "borderRadius": {
+      "small": "4px",
+      "medium": "8px",
+      "large": "16px",
+      "full": "9999px"
+    },
+    "spacing": {
+      "xs": "4px",
+      "sm": "8px",
+      "md": "16px",
+      "lg": "24px",
+      "xl": "32px",
+      "xxl": "48px"
+    },
+    "shadows": {
+      "small": "0 2px 4px rgba(0, 0, 0, 0.1)",
+      "medium": "0 4px 6px rgba(0, 0, 0, 0.1)",
+      "large": "0 10px 15px rgba(0, 0, 0, 0.1)"
+    },
+    "transitions": {
+      "fast": "0.2s",
+      "medium": "0.3s",
+      "slow": "0.5s"
+    }
+  },
+  "services": {
+    "categories": [
+      "Tarot Reading",
+      "Astrology",
+      "Spiritual Coaching"
+    ]
+  },
+  "contact": {
+    "email": "contact@younicorntarot.com",
+    "phone": "+1 (555) 123-4567",
+    "social": {
+      "instagram": "https://instagram.com/younicorntarot",
+      "facebook": "https://facebook.com/younicorntarot",
+      "twitter": "https://twitter.com/younicorntarot"
+    }
+  },
+  "navigation": {
+    "mainLinks": [
+      {"name": "About", "path": "#about", "isExternal": false},
+      {"name": "Tarot", "path": "#tarot-info", "isExternal": false},
+      {"name": "FAQ", "path": "#faq", "isExternal": false},
+      {"name": "Contact Us", "path": "#", "isModal": true, "modalType": "contact"}
+    ],
+    "footerLinks": [
+      {"name": "Privacy Policy", "path": "/privacy-policy", "isExternal": false},
+      {"name": "Terms of Service", "path": "/terms-of-service", "isExternal": false},
+      {"name": "Contact", "path": "#", "isModal": true, "modalType": "contact"}
+    ]
+  }
+}
