@@ -1,0 +1,9 @@
+# Wrangler Configuration for Cloudflare Pages
+
+name = "tarott"
+type = "webpack"
+
+# Specify the output directory for Cloudflare Pages
+[site]
+bucket = "./build"
+entry-point = "."

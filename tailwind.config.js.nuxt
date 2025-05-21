@@ -1,0 +1,31 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    "./app.vue",
+    "./error.vue"
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: '#554994',
+        secondary: '#F675A8',
+        accent: '#F29393',
+        background: '#FFCCB3',
+        dark: {
+          primary: '#242038',
+          secondary: '#725AC1',
+          background: '#0D0221'
+        }
+      },
+      fontFamily: {
+        serif: ['Playfair Display', 'serif'],
+        sans: ['Raleway', 'sans-serif']
+      }
+    },
+  },
+  plugins: [],
+}

@@ -1,10 +1,13 @@
 # Nuxt dev/build outputs
 .output
-.data
 .nuxt
 .nitro
 .cache
 dist
+.data
+
+# Nuxt generate
+.generated
 
 # Node dependencies
 node_modules
@@ -12,13 +15,73 @@ node_modules
 # Logs
 logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Misc
-.DS_Store
-.fleet
-.idea
-
-# Local env files
+# Environment variables
 .env
 .env.*
 !.env.example
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+.settings/
+*.sublime-workspace
+.DS_Store
+.fleet
+
+# Testing
+coverage
+.nyc_output
+
+# Temporary files
+*.swp
+*.swo
+.temp
+.tmp
+temp/
+tmp/
+
+# Specific to Nuxt
+.nuxt-*
+.vercel_build_output/
+.vercel/
+.netlify/
+
+# Build files that might be mixed from React
+build/
+public/build/
+
+# TypeScript
+*.tsbuildinfo
+
+# Debug files
+debug.log
+npm-debug.log
+yarn-debug.log
+.pnpm-debug.log
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Service worker
+sw.*
+
+# Cloudflare Files
+.cloudflare

@@ -1,97 +1,55 @@
-# EmpressJasmine Tarot Website
+# Tarott - Nuxt.js Tarot Reading Website
 
-A professional tarot and astrology website built with React, Framer Motion, and Tailwind CSS.
+A professional tarot reading website built with Nuxt.js and TailwindCSS.
 
 ## Features
 
-- Responsive design that works on all devices
-- Smooth animations and transitions with Framer Motion
-- Modern UI components with Tailwind CSS
-- Interactive tarot card experience
-- Contact form with validation
-- Newsletter signup
-- FAQ section with animated accordion
+- Modern design with fully responsive layout
+- Nuxt.js 3 for static site generation and server-side rendering
+- TailwindCSS for styling
+- Stripe integration for payment processing
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v14.0.0 or higher)
-- npm (v6.0.0 or higher)
-
-### Installation
-
-1. Clone the repository or download the source code
-2. Navigate to the project directory
+## Setup
 
 ```bash
-cd tarott
-```
-
-3. Install all dependencies (including react-intersection-observer)
-
-```bash
-npm run install-deps
-```
-
-4. Start the development server
-
-```bash
-npm start
-```
-
-The application will open in your browser at `http://localhost:3000`.
-
-## Troubleshooting
-
-If you encounter errors related to missing dependencies:
-
-1. Make sure all dependencies are properly installed:
-
-```bash
-npm install react-intersection-observer framer-motion tailwindcss postcss autoprefixer
-```
-
-2. If you're still having issues, check your package.json to make sure all required dependencies are listed and run:
-
-```bash
+# install dependencies
 npm install
-```
 
-## Build for Production
+# serve with hot reload at localhost:3000
+npm run dev
 
-To create a production build, run:
-
-```bash
+# build for production
 npm run build
+
+# generate static site
+npm run generate
 ```
-
-This will create an optimized build in the `build` directory.
-
-## Technologies Used
-
-- React.js
-- Framer Motion for animations
-- Tailwind CSS for styling
-- Google Fonts (Cormorant Garamond and Raleway)
 
 ## Project Structure
 
-- `/src/components` - React components for different sections of the website
-- `/src/App.js` - Main application component
-- `/src/index.css` - Global styles and Tailwind imports
-- `/public` - Static assets and HTML template
+- `pages/` - Page components
+- `components/` - Reusable Vue components
+- `assets/` - Static assets like images and global CSS
+- `public/` - Public files that should be directly accessible
+- `app.vue` - Main application component
+- `nuxt.config.js` - Nuxt configuration
 
-## Component Overview
+## Deployment
 
-- `Navbar.js` - Navigation bar with mobile menu
-- `Hero.js` - Hero section with parallax effect
-- `TarotInfo.js` - Information about tarot readings
-- `About.js` - About the tarot reader
-- `Services.js` - Services offered
-- `InteractiveTarot.js` - Interactive tarot card experience
-- `FAQ.js` - Frequently asked questions with accordion
-- `Contact.js` - Contact form with validation
-- `Manifestation.js` - Call to action for manifestation journal
-- `Newsletter.js` - Newsletter signup
-- `Footer.js` - Footer with social links
+This project is configured for deployment on Cloudflare Pages, but can be deployed to any static hosting service.
+
+```bash
+# Generate static files
+npm run generate
+
+# The output will be in the 'dist' directory
+```
+
+## Legacy Code
+
+This project was migrated from a React application. Some legacy React components are still present in the `src/` directory but are not used in the Nuxt application.
+
+## Credits
+
+- Design inspired by modern tarot websites
+- Tarot card imagery from various public domain sources
